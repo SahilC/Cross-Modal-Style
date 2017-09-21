@@ -30,6 +30,40 @@ from PIL import Image
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
+def generate_story_loss(image_loc, k=100, bw=50, lyric=False):
+    """
+    Generate a story for an image at location image_loc
+    """
+    # Load all vectors
+    z = load_all()
+
+    # Load the image
+    rawim, im = load_image(image_loc)
+
+    # Run image through convnet
+    feats = compute_features(z['net'], im).flatten()
+    feats /= norm(feats)
+
+    # Embed image into joint space
+    feats = embedding.encode_images(z['vse'], feats[None,:])
+
+    # Compute the nearest neighbours
+    scores = numpy.dot(feats, z['cvec'].T).flatten()
+    sorted_args = numpy.argsort(scores)[::-1]
+    sentences = [z['cap'][a] for a in sorted_args[:k]]
+
+    print 'NEAREST-CAPTIONS: '
+    for s in sentences[:5]:
+        print s
+    print ''
+
+    # Compute skip-thought vectors for sentences
+    svecs = skipthoughts.encode(z['stv'], sentences, verbose=False)
+
+    # Style shifting
+    shift = svecs.mean(0) - z['bneg'] + z['bpos']
+
+    return svecs.mean(0), z['bneg'], z['bpos']
 
 def story(z, image_loc, k=100, bw=50, lyric=False):
     """

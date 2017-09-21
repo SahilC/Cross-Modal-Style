@@ -31,7 +31,7 @@ from PIL import Image
 from PIL import ImageFile
 ImageFile.LOAD_TRUNCATED_IMAGES = True
 
-def generate_story_loss(image_loc, k=100, bw=50, lyric=False):
+def generate_story_loss(z, image_loc, k=100, bw=50, lyric=False):
     """
     Generate a story for an image at location image_loc
     """

@@ -20,6 +20,7 @@ from lasagne.nonlinearities import softmax
 from lasagne.utils import floatX
 if not config.FLAG_CPU_MODE:
     from lasagne.layers.corrmm import Conv2DMMLayer as ConvLayer
+    # from lasagne.layers import Conv2DLayer as ConvLayer
 
 from scipy import optimize, stats
 from collections import OrderedDict, defaultdict, Counter
@@ -34,9 +35,6 @@ def generate_story_loss(image_loc, k=100, bw=50, lyric=False):
     """
     Generate a story for an image at location image_loc
     """
-    # Load all vectors
-    z = load_all()
-
     # Load the image
     rawim, im = load_image(image_loc)
 
@@ -61,7 +59,7 @@ def generate_story_loss(image_loc, k=100, bw=50, lyric=False):
     svecs = skipthoughts.encode(z['stv'], sentences, verbose=False)
 
     # Style shifting
-    shift = svecs.mean(0) - z['bneg'] + z['bpos']
+    # shift = svecs.mean(0) - z['bneg'] + z['bpos']
 
     return svecs.mean(0), z['bneg'], z['bpos']
 

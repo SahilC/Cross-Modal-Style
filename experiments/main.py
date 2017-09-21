@@ -21,7 +21,7 @@ from option import Options
 import sys
 sys.path.append('neural-storyteller/')
 
-from generate import get_story_loss
+from generate import load_all, generate_story_loss
 
 def main():
 	"""
@@ -71,6 +71,7 @@ def optimize(args):
 	"""	Gatys et al. CVPR 2017
 	ref: Image Style Transfer Using Convolutional Neural Networks
 	"""
+        z = load_all()
 	# load the content and style target
 	content_image = utils.tensor_load_rgbimage(args.content_image, size=args.content_size, keep_asp=True)
 	content_image = content_image.unsqueeze(0)
@@ -93,6 +94,7 @@ def optimize(args):
 	f_xc_c = Variable(features_content[1].data, requires_grad=False)
 	features_style = vgg(style_image)
 	gram_style = [utils.gram_matrix(y) for y in features_style]
+
 	# init optimizer
 	output = Variable(content_image.data, requires_grad=True)
 	optimizer = Adam([output], lr=args.lr)
@@ -106,8 +108,7 @@ def optimize(args):
 		features_y = vgg(output)
 		content_loss = args.content_weight * mse_loss(features_y[1], f_xc_c)
 
-		
-		skip_vec, bneg, bpos = get_story_loss('output/temp'+str(e)+'.jpg')
+		skip_vec, bneg, bpos = generate_story_loss(z, 'output/temp'+str(e)+'.jpg')
 		style_loss = args.style_weight * mse_loss(skip_vec, bpos)
 		# for m in range(len(features_y)):
 		# 	gram_y = utils.gram_matrix(features_y[m])

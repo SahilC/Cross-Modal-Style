@@ -18,6 +18,11 @@ from myutils import utils
 from myutils.vgg16 import Vgg16 
 from option import Options
 
+import sys
+sys.path.append('neural-storyteller/')
+
+from generate import load_all, get_story_loss
+
 def main():
 	"""
 	For extending the package:

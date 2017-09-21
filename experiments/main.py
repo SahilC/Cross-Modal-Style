@@ -21,7 +21,7 @@ from option import Options
 import sys
 sys.path.append('neural-storyteller/')
 
-from generate import load_all, get_story_loss
+from generate import get_story_loss
 
 def main():
 	"""
@@ -100,15 +100,19 @@ def optimize(args):
 	# optimizing the images
 	for e in range(args.iters):
 		utils.imagenet_clamp_batch(output, 0, 255)
+		temp = utils.add_imagenet_mean_batch(output)
+		utils.tensor_save_bgrimage(temp.data[0], 'output/temp'+str(e)+'.jpg', args.cuda)
 		optimizer.zero_grad()
 		features_y = vgg(output)
 		content_loss = args.content_weight * mse_loss(features_y[1], f_xc_c)
 
-		style_loss = 0.
-		for m in range(len(features_y)):
-			gram_y = utils.gram_matrix(features_y[m])
-			gram_s = Variable(gram_style[m].data, requires_grad=False)
-			style_loss += args.style_weight * mse_loss(gram_y, gram_s)
+		
+		skip_vec, bneg, bpos = get_story_loss('output/temp'+str(e)+'.jpg')
+		style_loss = args.style_weight * mse_loss(skip_vec, bpos)
+		# for m in range(len(features_y)):
+		# 	gram_y = utils.gram_matrix(features_y[m])
+		# 	gram_s = Variable(gram_style[m].data, requires_grad=False)
+		# 	style_loss += args.style_weight * mse_loss(gram_y, gram_s)
 
 		total_loss = content_loss + style_loss
 

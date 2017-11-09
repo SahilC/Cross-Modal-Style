@@ -2,6 +2,9 @@ from myutils import utils
 from myutils.vgg16 import Vgg16 
 from option import Options
 
+import torch
+from torch.autograd import Variable
+from torch.optim import Adam
 import torchvision.datasets as dset
 import torchvision.transforms as transforms
 
@@ -47,4 +50,5 @@ def extract_feats(args):
 	# print("Image Size: ", img.size())
 	# print(target)
 
-	
+if __name__ == '__main__':
+	main()

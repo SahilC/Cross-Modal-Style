@@ -4,6 +4,7 @@ This repo provides PyTorch Implementation of the Cross-Modal-Style transfer pape
 
 Paper:- https://ieeexplore.ieee.org/document/8451734
 
+## Architecture Diagram
 <img src='images/cross_modal_style_vec.png' />
 
 ### Acknowledgement

@@ -1,5 +1,7 @@
 # [WIP] Cross Modal Style Transfer
 
+Code cleanup in Progress. 
+
 We present a method for cross-modal style transfer between an English sentence to an image, to produce a new image that imbibes the essential theme of the sentence. We do this by modifying the style transfer mechanism used in image style transfer to incorporate a style component derived from the given sentence. 
 
 This repo provides PyTorch Implementation of the Cross-Modal-Style transfer paper from:- 

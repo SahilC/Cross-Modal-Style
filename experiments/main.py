@@ -111,12 +111,12 @@ def optimize(args):
 		skip_vec, bneg, bpos = generate_story_loss(z, 'output/temp'+str(e)+'.jpg')
                 skip_vec = Variable(torch.from_numpy(skip_vec), requires_grad=False)
                 bpos = Variable(torch.from_numpy(bpos), requires_grad=False)
-		style_loss = args.style_weight * mse_loss(skip_vec, bpos).cuda()
-                print "Content Loss:"+str(content_loss)+"Style Loss:"+str(style_loss)
-		# for m in range(len(features_y)):
-		# 	gram_y = utils.gram_matrix(features_y[m])
-		# 	gram_s = Variable(gram_style[m].data, requires_grad=False)
-		# 	style_loss += args.style_weight * mse_loss(gram_y, gram_s)
+		# style_loss = args.style_weight * mse_loss(skip_vec, bpos).cuda()
+    #            print "Content Loss:"+str(content_loss)+"Style Loss:"+str(style_loss)
+		for m in range(len(features_y)):
+		 	gram_y = utils.gram_matrix(features_y[m])
+		 	gram_s = Variable(gram_style[m].data, requires_grad=False)
+		 	style_loss += args.style_weight * mse_loss(gram_y, gram_s)
 
 		total_loss = content_loss + style_loss
 

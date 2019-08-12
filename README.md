@@ -11,9 +11,9 @@ Paper:- https://ieeexplore.ieee.org/document/8451734
 
 ## Dataset
 
-YFCC 100M - <a href='https://webscope.sandbox.yahoo.com/catalog.php?datatype=i&did=67&guccounter=1&guce_referrer=aHR0cDovL3Byb2plY3RzLmRma2kudW5pLWtsLmRlL3lmY2MxMDBtLz8&guce_referrer_sig=AQAAALot-eUWdiMmyIN9Q0I0llblfIFKY6ts0Vfjwxylf6nI7m6nlsmiHMo7NZn1qQNpvKUAQioJMyZBnqeXeeIz9Ydi2XF3hxAV2uZCKY7avGZREtLFtLsq4oqLzhENYe-ryaCQrM9cWPKO7Kphvpxz2FIEGGjI35wkKZQdVaRuGosR'> link </a>
+We demonstrate promising results using the YFCC100m dataset - <a href='https://webscope.sandbox.yahoo.com/catalog.php?datatype=i&did=67&guccounter=1&guce_referrer=aHR0cDovL3Byb2plY3RzLmRma2kudW5pLWtsLmRlL3lmY2MxMDBtLz8&guce_referrer_sig=AQAAALot-eUWdiMmyIN9Q0I0llblfIFKY6ts0Vfjwxylf6nI7m6nlsmiHMo7NZn1qQNpvKUAQioJMyZBnqeXeeIz9Ydi2XF3hxAV2uZCKY7avGZREtLFtLsq4oqLzhENYe-ryaCQrM9cWPKO7Kphvpxz2FIEGGjI35wkKZQdVaRuGosR'> link </a>
 
-We demonstrate promising results using the YFCC100m dataset.
+
 
 ### Acknowledgement
 The code benefits from outstanding prior work and their implementations including:

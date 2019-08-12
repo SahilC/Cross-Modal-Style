@@ -4,6 +4,8 @@ This repo provides PyTorch Implementation of the Cross-Modal-Style transfer pape
 
 Paper:- https://ieeexplore.ieee.org/document/8451734
 
+<img src='images/cross_modal_style_vec.png' />
+
 ### Acknowledgement
 The code benefits from outstanding prior work and their implementations including:
 - [Texture Networks: Feed-forward Synthesis of Textures and Stylized Images](https://arxiv.org/pdf/1603.03417.pdf) by Ulyanov *et al. ICML 2016*. ([code](https://github.com/DmitryUlyanov/texture_nets))

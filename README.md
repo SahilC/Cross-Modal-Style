@@ -1,4 +1,4 @@
-# Cross-Modal-Style-Transfer
+# Cross Modal Style Transfer
 
 This repo provides PyTorch Implementation of the Cross-Modal-Style transfer paper from:- 
 

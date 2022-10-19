@@ -1,4 +1,4 @@
-# [WIP] Cross Modal Style Transfer
+# Cross Modal Style Transfer
 
 Code cleanup in Progress. 
 
